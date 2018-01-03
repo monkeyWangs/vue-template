@@ -1,20 +1,20 @@
 <template>
   <div class="layout">
-    <% _.forEach(data.components, function(component){ %>
-      <<%- component.name %> :data="component.data"></<%- component.name %>>
+    <% _.forEach(data.components, function(component, i){ %>
+      <<%- {{component.name}}{{i}} %> :data="component.data"></<%- {{component.name}}{{i}} %>>
     <% }) %>
   </div>
 </template>
 
 <script>
-  <% _.forEach(data.components, function(component){ %>
-    import t{{component.name}} from 'components/{{component.source}}.vue'
+  <% _.forEach(data.components, function(component, i){ %>
+    import {{component.name}}{{i}} from 'components/{{component.source}}.vue'
   <% }) %>
 export default {
   name: 'app',
   components: {
-  <% _.forEach(data.components, function(component){ %>
-    {{component.name}},
+  <% _.forEach(data.components, function(component, i){ %>
+    {{component.name}}{{i}},
   <% }) %>
   }
 }
